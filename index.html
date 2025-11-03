@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Treino Hipertrofia — Estilo Cariani</title>
+  <style>
+    :root{
+      --bg:#f5f7fb; --card:#fff; --accent:#2f80ed; --text:#222;
+    }
+    body{
+      margin:0; padding:20px; font-family:Inter, Arial, Helvetica, sans-serif;
+      background:var(--bg); color:var(--text);
+    }
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+    h1{margin:0;font-size:20px}
+    .subtitle{color:#59606b;font-size:13px}
+    .container{display:grid;grid-template-columns:1fr;gap:14px;max-width:1100px;margin:0 auto}
+    .day{
+      background:var(--card); border-radius:12px; padding:12px; box-shadow:0 6px 18px rgba(20,30,50,0.06);
+    }
+    .day h2{margin:0 0 6px 0;color:#193152}
+    table{width:100%;border-collapse:collapse;margin-top:8px}
+    th,td{padding:8px;border-bottom:1px solid #e6e9f2;text-align:left;vertical-align:middle}
+    th{background:#f7f8fb;color:#455}
+    .exerc{display:flex;gap:12px;align-items:center}
+    .imgwrap{width:180px;height:120px;border-radius:8px;overflow:hidden;flex:0 0 180px;border:1px solid #e6e9f2;background:#f2f4f9;display:flex;align-items:center;justify-content:center}
+    .imgwrap img{width:100%;height:100%;object-fit:cover;display:block}
+    input[type="text"]{padding:6px;border-radius:6px;border:1px solid #cfd6e6;width:100%}
+    .note{font-size:13px;color:#445;margin-top:6px}
+    .controls{display:flex;gap:8px;align-items:center}
+    .savehint{color:green;font-size:13px;margin-left:8px}
+    footer{margin-top:18px;text-align:center;color:#6b7280;font-size:13px}
+
+    /* modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(10,12,20,0.65);z-index:9999}
+    .modal.open{display:flex}
+    .modal .box{max-width:1000px;width:94%;background:var(--card);padding:14px;border-radius:10px}
+    .modal img{width:100%;height:auto;border-radius:8px}
+    .meta{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+    .btn{background:var(--accent);color:#fff;border:0;padding:8px 10px;border-radius:8px;cursor:pointer}
+    .btn.secondary{background:#eef4ff;color:var(--accent)}
+    @media (max-width:880px){
+      .imgwrap{display:none}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Treino de Hipertrofia — Estilo Cariani</h1>
+    <div class="subtitle">Rotina intermediária — 5 dias por semana | Objetivo: ganho de massa</div>
+  </div>
+  <div style="text-align:right">
+    <div style="font-size:13px;color:#556">As alterações são salvas automaticamente no seu navegador.</div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Segunda - Peito + Tríceps -->
+  <section class="day" id="segunda">
+    <h2>Segunda — Peito + Tríceps</h2>
+    <table>
+      <thead>
+        <tr><th>Exercício</th><th>Séries</th><th>Reps</th><th>Carga (kg)</th><th>Observações</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://cdn.muscleandstrength.com/sites/default/files/barbell-bench-press_0.jpg" alt="Supino reto" loading="lazy"></div>
+              <div>
+                <strong>Supino reto — Barra</strong>
+                <div class="note">4x 8–10 — Controle na descida (3s), força na subida</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="segunda_supino_reps" type="text" placeholder="ex: 8-10"></td>
+          <td><input id="segunda_supino_carga" type="text" placeholder="kg"></td>
+          <td><input id="segunda_supino_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://weighttraining.guide/wp-content/uploads/2016/11/incline-dumbbell-bench-press-resized.png" alt="Supino inclinado" loading="lazy"></div>
+              <div>
+                <strong>Supino inclinado — Halteres</strong>
+                <div class="note">4x 10–12 — Amplitude máxima</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="segunda_inclinado_reps" type="text" placeholder="ex: 10-12"></td>
+          <td><input id="segunda_inclinado_carga" type="text" placeholder="kg"></td>
+          <td><input id="segunda_inclinado_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://cdn.shopify.com/s/files/1/0618/9462/3460/files/stock-photo-bodybuilder-is-working-on-his-chest-with-cable-crossover-in-gym-scream-for-motivation-750696826-800x587.jpg" alt="Crossover" loading="lazy"></div>
+              <div>
+                <strong>Crossover</strong>
+                <div class="note">3x 12–15 — Pico de contração</div>
+              </div>
+            </div>
+          </td>
+          <td>3</td>
+          <td><input id="segunda_crossover_reps" type="text" placeholder="ex: 12-15"></td>
+          <td><input id="segunda_crossover_carga" type="text" placeholder="kg/ajuste"></td>
+          <td><input id="segunda_crossover_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://s2-ge.glbimg.com/nG2mbkvKpkXTBaiUJ3Iz9LGckoM%3D/2401x0/filters%3Aformat%28jpeg%29/https%3A//i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2024/A/C/iGfWsrSPWOwAqBZswwNA/supino-reto-com-barra.png" alt="Paralelas" loading="lazy"></div>
+              <div>
+                <strong>Paralelas (mergulho)</strong>
+                <div class="note">3x — Peso corporal / falha. Adicione carga se possível.</div>
+              </div>
+            </div>
+          </td>
+          <td>3</td>
+          <td><input id="segunda_paralelas_reps" type="text" placeholder="ex: falha"></td>
+          <td><input id="segunda_paralelas_carga" type="text" placeholder="kg"></td>
+          <td><input id="segunda_paralelas_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://www.puregym.com/media/0kujs5ev/tricep-pushdowns.jpg?quality=80" alt="Tríceps corda" loading="lazy"></div>
+              <div>
+                <strong>Tríceps corda — Crossover</strong>
+                <div class="note">3x 12–15 — Contração total</div>
+              </div>
+            </div>
+          </td>
+          <td>3</td>
+          <td><input id="segunda_triceps_reps" type="text" placeholder="ex: 12-15"></td>
+          <td><input id="segunda_triceps_carga" type="text" placeholder="kg"></td>
+          <td><input id="segunda_triceps_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://i.ytimg.com/vi/1uDiW5--rAE/maxresdefault.jpg" alt="Tríceps francês" loading="lazy"></div>
+              <div>
+                <strong>Tríceps francês — Halter</strong>
+                <div class="note">3x 10–12 — Cotovelos fixos</div>
+              </div>
+            </div>
+          </td>
+          <td>3</td>
+          <td><input id="segunda_trifran_reps" type="text" placeholder="ex: 10-12"></td>
+          <td><input id="segunda_trifran_carga" type="text" placeholder="kg"></td>
+          <td><input id="segunda_trifran_obs" type="text" placeholder="Observações"></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Terça - Costas + Bíceps -->
+  <section class="day" id="terca">
+    <h2>Terça — Costas + Bíceps</h2>
+    <table>
+      <thead><tr><th>Exercício</th><th>Séries</th><th>Reps</th><th>Carga (kg)</th><th>Observações</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://www.inspireusafoundation.org/wp-content/uploads/2021/10/lat-pulldown.png" alt="Puxada alta" loading="lazy"></div>
+              <div>
+                <strong>Puxada alta frente — Polia</strong>
+                <div class="note">4x 10–12 — Contraia as escápulas</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="terca_puxada_reps" type="text" placeholder="ex: 10-12"></td>
+          <td><input id="terca_puxada_carga" type="text" placeholder="kg"></td>
+          <td><input id="terca_puxada_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://s.zst.com.br/cms-assets/2022/03/agachamento-smith.webp" alt="Remada curvada" loading="lazy"></div>
+              <div>
+                <strong>Remada curvada — Barra</strong>
+                <div class="note">4x 8–10 — Postura firme, costas retas</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="terca_remadacurv_reps" type="text" placeholder="ex: 8-10"></td>
+          <td><input id="terca_remadacurv_carga" type="text" placeholder="kg"></td>
+          <td><input id="terca_remadacurv_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://cdn.muscleandstrength.com/sites/default/files/seated-cable-row.jpg" alt="Remada baixa" loading="lazy"></div>
+              <div>
+                <strong>Remada baixa — Cabo</strong>
+                <div class="note">3x 12 — Movimento controlado</div>
+              </div>
+            </div>
+          </td>
+          <td>3</td>
+          <td><input id="terca_remadabaixa_reps" type="text" placeholder="ex: 12"></td>
+          <td><input id="terca_remadabaixa_carga" type="text" placeholder="kg"></td>
+          <td><input id="terca_remadabaixa_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://i0.wp.com/www.muscleandfitness.com/wp-content/uploads/2014/02/418_B.jpg?quality=86&strip=all" alt="Puxada neutra" loading="lazy"></div>
+              <div>
+                <strong>Puxada neutra — Polia</strong>
+                <div class="note">3x 10–12 — Tensão constante</div>
+              </div>
+            </div>
+          </td>
+          <td>3</td>
+          <td><input id="terca_puxadaneutra_reps" type="text" placeholder="ex: 10-12"></td>
+          <td><input id="terca_puxadaneutra_carga" type="text" placeholder="kg"></td>
+          <td><input id="terca_puxadaneutra_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://cdn.muscleandstrength.com/sites/default/files/standing-barbell-curl.jpg" alt="Rosca direta" loading="lazy" onerror="this.src='https://i.imgur.com/8Km9tLL.png'"></div>
+              <div>
+                <strong>Rosca direta — Barra</strong>
+                <div class="note">4x 10–12 — Sem balanço</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="terca_rosca_reps" type="text" placeholder="ex: 10-12"></td>
+          <td><input id="terca_rosca_carga" type="text" placeholder="kg"></td>
+          <td><input id="terca_rosca_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://i.ytimg.com/vi/XlGjQYUN4RQ/maxresdefault.jpg" alt="Rosca alternada" loading="lazy"></div>
+              <div>
+                <strong>Rosca alternada — Halteres</strong>
+                <div class="note">3x 12 — Giro completo de punho</div>
+              </div>
+            </div>
+          </td>
+          <td>3</td>
+          <td><input id="terca_roscaalt_reps" type="text" placeholder="ex: 12"></td>
+          <td><input id="terca_roscaalt_carga" type="text" placeholder="kg"></td>
+          <td><input id="terca_roscaalt_obs" type="text" placeholder="Observações"></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Quarta - Pernas (ênfase quadríceps) -->
+  <section class="day" id="quarta">
+    <h2>Quarta — Pernas (ênfase quadríceps)</h2>
+    <table>
+      <thead><tr><th>Exercício</th><th>Séries</th><th>Reps</th><th>Carga (kg)</th><th>Observações</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://hips.hearstapps.com/hmg-prod/images/man-training-with-weights-royalty-free-image-1718637105.jpg" alt="Agachamento livre" loading="lazy"></div>
+              <div>
+                <strong>Agachamento livre — Barra</strong>
+                <div class="note">4x 8–10 — Movimento completo e controlado</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="quarta_agach_reps" type="text" placeholder="ex: 8-10"></td>
+          <td><input id="quarta_agach_carga" type="text" placeholder="kg"></td>
+          <td><input id="quarta_agach_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://watsongym.co.uk/wp-content/uploads/2023/03/Leg-Press-4.jpg" alt="Leg press" loading="lazy"></div>
+              <div>
+                <strong>Leg press — Máquina</strong>
+                <div class="note">4x 10–12 — Pés baixos e juntos</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="quarta_legpress_reps" type="text" placeholder="ex: 10-12"></td>
+          <td><input id="quarta_legpress_carga" type="text" placeholder="kg"></td>
+          <td><input id="quarta_legpress_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://www.lmesportes.com.br/media/wysiwyg/legpress_1.jpg" alt="Cadeira extensora" loading="lazy"></div>
+              <div>
+                <strong>Cadeira extensora — Máquina</strong>
+                <div class="note">4x 12–15 — Pico de contração</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="quarta_extensora_reps" type="text" placeholder="ex: 12-15"></td>
+          <td><input id="quarta_extensora_carga" type="text" placeholder="kg"></td>
+          <td><input id="quarta_extensora_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://cdn.shopify.com/s/files/1/0802/1508/1237/files/Barbell_Squat_Safety_480x480.webp?v=1716928641" alt="Passada" loading="lazy"></div>
+              <div>
+                <strong>Passada (afundo) — Halteres</strong>
+                <div class="note">3x 10–12 — Passos longos</div>
+              </div>
+            </div>
+          </td>
+          <td>3</td>
+          <td><input id="quarta_passada_reps" type="text" placeholder="ex: 10-12"></td>
+          <td><input id="quarta_passada_carga" type="text" placeholder="kg"></td>
+          <td><input id="quarta_passada_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://www.lmesportes.com.br/media/wysiwyg/legpress_1.jpg" alt="Panturrilha em pé" loading="lazy"></div>
+              <div>
+                <strong>Panturrilha em pé — Máquina</strong>
+                <div class="note">4x 15–20 — Tensão total, sem impulso</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="quarta_pant_reps" type="text" placeholder="ex: 15-20"></td>
+          <td><input id="quarta_pant_carga" type="text" placeholder="kg"></td>
+          <td><input id="quarta_pant_obs" type="text" placeholder="Observações"></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Quinta - Ombros + Trapézio -->
+  <section class="day" id="quinta">
+    <h2>Quinta — Ombros + Trapézio</h2>
+    <table>
+      <thead><tr><th>Exercício</th><th>Séries</th><th>Reps</th><th>Carga (kg)</th><th>Observações</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://www.basefitness.com.br/wp-content/uploads/2017/08/execu%C3%A7%C3%A3o-ponte-para-gluteos.jpg" alt="Desenvolvimento ombro" loading="lazy"></div>
+              <div>
+                <strong>Desenvolvimento — Halteres</strong>
+                <div class="note">4x 8–10 — Controle total na descida</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="quinta_desenv_reps" type="text" placeholder="ex: 8-10"></td>
+          <td><input id="quinta_desenv_carga" type="text" placeholder="kg"></td>
+          <td><input id="quinta_desenv_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://weighttraining.guide/wp-content/uploads/2016/11/incline-dumbbell-bench-press-resized.png" alt="Elevação lateral" loading="lazy"></div>
+              <div>
+                <strong>Elevação lateral — Halteres</strong>
+                <div class="note">4x 12–15 — Tensão constante</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="quinta_lat_reps" type="text" placeholder="ex: 12-15"></td>
+          <td><input id="quinta_lat_carga" type="text" placeholder="kg"></td>
+          <td><input id="quinta_lat_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://i.ytimg.com/vi/-h-7J2TFIeg/maxresdefault.jpg" alt="Elevação frontal" loading="lazy"></div>
+              <div>
+                <strong>Elevação frontal — Halteres</strong>
+                <div class="note">3x 12 — Alternar os braços</div>
+              </div>
+            </div>
+          </td>
+          <td>3</td>
+          <td><input id="quinta_front_reps" type="text" placeholder="ex: 12"></td>
+          <td><input id="quinta_front_carga" type="text" placeholder="kg"></td>
+          <td><input id="quinta_front_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://cdn.shopify.com/s/files/1/1497/9682/files/MicrosoftTeams-image_5_c40117c8-4452-4801-b272-c56dcde1c0f0.jpg?v=1659021798" alt="Crucifixo inverso" loading="lazy"></div>
+              <div>
+                <strong>Crucifixo inverso — Máquina</strong>
+                <div class="note">3x 15 — Foco no deltoide posterior</div>
+              </div>
+            </div>
+          </td>
+          <td>3</td>
+          <td><input id="quinta_crucinv_reps" type="text" placeholder="ex: 15"></td>
+          <td><input id="quinta_crucinv_carga" type="text" placeholder="kg"></td>
+          <td><input id="quinta_crucinv_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://i.ytimg.com/vi/1uDiW5--rAE/maxresdefault.jpg" alt="Encolhimento" loading="lazy"></div>
+              <div>
+                <strong>Encolhimento — Barra</strong>
+                <div class="note">4x 15 — Segurar 1s no topo</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="quinta_enc_reps" type="text" placeholder="ex: 15"></td>
+          <td><input id="quinta_enc_carga" type="text" placeholder="kg"></td>
+          <td><input id="quinta_enc_obs" type="text" placeholder="Observações"></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Sexta - Pernas (ênfase posteriores + glúteos) -->
+  <section class="day" id="sexta">
+    <h2>Sexta — Pernas (ênfase posteriores + glúteos)</h2>
+    <table>
+      <thead><tr><th>Exercício</th><th>Séries</th><th>Reps</th><th>Carga (kg)</th><th>Observações</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://i.ytimg.com/vi/1uDiW5--rAE/maxresdefault.jpg" alt="Stiff" loading="lazy"></div>
+              <div>
+                <strong>Stiff — Barra</strong>
+                <div class="note">4x 10 — Descida lenta, alongando bem</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="sexta_stiff_reps" type="text" placeholder="ex: 10"></td>
+          <td><input id="sexta_stiff_carga" type="text" placeholder="kg"></td>
+          <td><input id="sexta_stiff_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://i0.wp.com/www.muscleandfitness.com/wp-content/uploads/2014/02/418_B.jpg?quality=86&strip=all" alt="Mesa flexora" loading="lazy"></div>
+              <div>
+                <strong>Mesa flexora — Máquina</strong>
+                <div class="note">4x 12 — Contração máxima</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="sexta_mesa_reps" type="text" placeholder="ex: 12"></td>
+          <td><input id="sexta_mesa_carga" type="text" placeholder="kg"></td>
+          <td><input id="sexta_mesa_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://www.lmesportes.com.br/media/wysiwyg/legpress_1.jpg" alt="Cadeira abdutora" loading="lazy"></div>
+              <div>
+                <strong>Cadeira abdutora — Máquina</strong>
+                <div class="note">3x 15 — Movimento controlado</div>
+              </div>
+            </div>
+          </td>
+          <td>3</td>
+          <td><input id="sexta_abdut_reps" type="text" placeholder="ex: 15"></td>
+          <td><input id="sexta_abdut_carga" type="text" placeholder="kg"></td>
+          <td><input id="sexta_abdut_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://barbend.com/wp-content/uploads/2022/02/hip-thrust-barbend-movement-gif-masters.gif" alt="Hip Thrust" loading="lazy"></div>
+              <div>
+                <strong>Ponte de glúteo (Hip Thrust) — Barra</strong>
+                <div class="note">4x 10–12 — Segurar no topo</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="sexta_hip_reps" type="text" placeholder="ex: 10-12"></td>
+          <td><input id="sexta_hip_carga" type="text" placeholder="kg"></td>
+          <td><input id="sexta_hip_obs" type="text" placeholder="Observações"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="exerc">
+              <div class="imgwrap"><img src="https://www.lmesportes.com.br/media/wysiwyg/legpress_1.jpg" alt="Panturrilha sentado" loading="lazy"></div>
+              <div>
+                <strong>Panturrilha sentado — Máquina</strong>
+                <div class="note">4x 20 — Ritmo constante</div>
+              </div>
+            </div>
+          </td>
+          <td>4</td>
+          <td><input id="sexta_pantse_reps" type="text" placeholder="ex: 20"></td>
+          <td><input id="sexta_pantse_carga" type="text" placeholder="kg"></td>
+          <td><input id="sexta_pantse_obs" type="text" placeholder="Observações"></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    Dicas estilo Cariani: priorize técnica, use intensificadores (drop set, rest-pause), progrida semanalmente e registre seu progresso.
+  </footer>
+</main>
+
+<!-- modal de imagem -->
+<div class="modal" id="modal">
+  <div class="box">
+    <img id="modalImg" src="" alt="">
+    <div class="meta">
+      <div id="modalTitle" style="font-weight:600;color:#222"></div>
+      <div><button id="closeModal" class="btn secondary">Fechar</button></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Salvar/Carregar campos automaticamente usando localStorage
+  const inputs = document.querySelectorAll('input[type="text"]');
+  inputs.forEach(i=>{
+    const saved = localStorage.getItem(i.id);
+    if(saved) i.value = saved;
+    i.addEventListener('input', ()=> {
+      localStorage.setItem(i.id, i.value);
+      // mostrar dica rápida (opcional): você já tem a mensagem no header
+    });
+  });
+
+  // Modal de imagem (clicar em qualquer imagem amplia)
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modalImg');
+  const modalTitle = document.getElementById('modalTitle');
+  document.querySelectorAll('.imgwrap img').forEach(img=>{
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', ()=> {
+      modalImg.src = img.src;
+      modalTitle.textContent = img.alt || '';
+      modal.classList.add('open');
+    });
+  });
+  document.getElementById('closeModal').addEventListener('click', ()=> modal.classList.remove('open'));
+  modal.addEventListener('click', (e)=> { if(e.target === modal) modal.classList.remove('open') });
+
+  // Função para limpar todo o treino (caso queira)
+  function clearAll() {
+    if(!confirm('Tem certeza que quer apagar todos os campos salvos localmente?')) return;
+    document.querySelectorAll('input[type="text"]').forEach(i=>{
+      i.value = '';
+      localStorage.removeItem(i.id);
+    });
+    alert('Dados apagados.');
+  }
+
+  // Atalho: Ctrl+Shift+C para limpar (opcional)
+  document.addEventListener('keydown', (e)=> {
+    if(e.ctrlKey && e.shiftKey && e.code === 'KeyC') clearAll();
+  });
+</script>
+
+</body>
+</html>
